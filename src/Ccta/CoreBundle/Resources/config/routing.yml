@@ -1,0 +1,3 @@
+ccta_core_homepage:
+    path:     /
+    defaults: { _controller: CctaCoreBundle:Default:index }

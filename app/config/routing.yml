@@ -1,0 +1,4 @@
+ccta_core:
+    resource: "@CctaCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
