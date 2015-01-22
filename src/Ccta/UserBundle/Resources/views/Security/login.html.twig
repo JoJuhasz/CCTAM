@@ -1,0 +1,49 @@
+{% extends "@CctaUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="well">
+                <form id="loginForm" method="POST" action="{{ path("fos_user_security_check") }}">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="form-group">
+                        <label for="username" class="control-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="_username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="_password" value="" required="" title="Please enter your password">
+                        <span class="help-block"></span>
+                    </div>
+                    <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="_remember_me" id="remember_me"> Remember login
+                        </label>
+                        <p class="help-block">(if this is a private computer)</p>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                    <a href="{{ path('fos_user_change_password') }}" class="btn btn-default btn-block">Help to login</a>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <p class="lead">Register <span class="text-success">NOW</span></p>
+            <ul class="list-unstyled" style="line-height: 2">
+                <li><span class="fa fa-check text-success"></span> Manage your alliances</li>
+                <li><span class="fa fa-check text-success"></span> Create coalitions</li>
+                <li><span class="fa fa-check text-success"></span> Keep your soldiers informed about orders</li>
+                <li><span class="fa fa-check text-success"></span> Keep up up motivation</li>
+                <li><span class="fa fa-check text-success"></span> Be better !!</li>
+                <li><a href="/read-more/"><u>Read more</u></a></li>
+            </ul>
+            <p><a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-block">Yes please, register now!</a></p>
+        </div>
+    </div>
+{% endblock fos_user_content %}

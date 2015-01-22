@@ -20,23 +20,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><img src="{{ asset('bundles/cctacore/images/minilogo.jpg') }}" alt="" /></a>
+            <a class="navbar-brand" href="{{ path('ccta_core_homepage') }}"><img src="{{ asset('bundles/cctacore/images/minilogo.jpg') }}" alt="" /></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">Présentation</a></li>
+                <li class="active"><a href="{{ path('ccta_core_homepage') }}">Présentation</a></li>
                 <li class="active"><a href="">Jouer</a></li>
-
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li><a href=""><span class="text-danger">Admin</span></a></li>
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if false %}
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ app.user.username }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="">Profil</a></li>
-                            <li><a href="">Déconnexion</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         </ul>
                     </li>
                 {% else %}
@@ -45,8 +47,8 @@
                             Invité <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="">Connexion</a></li>
-                            <li><a href="">Inscription</a></li>
+                            <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                            <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
                         </ul>
                     </li>
                 {% endif %}
@@ -57,6 +59,9 @@
 <div class="container">
 
     <p>
+        {% for message in app.session.flashbag.get('info') %}
+    <div class="alert alert-info" role="alert">Message flash : {{ message }}</div>
+    {% endfor %}
     </p>
 
     <div class="row">
@@ -74,6 +79,7 @@
 </div>
 
 {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endblock %}
