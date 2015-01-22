@@ -4,11 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}THIS IS CCTA{% endblock %}</title>
-
-    {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/cctacore/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/cctacore/css/main.css') }}">
-    {% endblock %}
+    {% stylesheets '@CctaCoreBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
@@ -56,6 +54,11 @@
         </div>
     </div>
 </div>
+{% block afternav %}
+    <div id="afternav-panel">
+        AFTERNAME
+    </div>
+{% endblock %}
 <div class="container">
 
     <p>
