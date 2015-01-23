@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Ccta\UserBundle\CctaUserBundle(),
 	        new FOS\UserBundle\FOSUserBundle(),
             new Ccta\WarlogBundle\CctaWarlogBundle(),
+            new Ccta\PlayerBundle\CctaPlayerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

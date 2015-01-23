@@ -1,3 +1,7 @@
+ccta_player:
+    resource: "@CctaPlayerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ccta_warlog:
     resource: "@CctaWarlogBundle/Resources/config/routing.yml"
     prefix:   /
