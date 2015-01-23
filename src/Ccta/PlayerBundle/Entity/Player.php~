@@ -270,27 +270,4 @@ class Player
 	{
 		return $this->getUploadDir()."/".$this->avatarPath;
 	}
-
-    /**
-     * Set user
-     *
-     * @param \Ccta\UserBundle\Entity\User $user
-     * @return Player
-     */
-    public function setUser(\Ccta\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Ccta\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }

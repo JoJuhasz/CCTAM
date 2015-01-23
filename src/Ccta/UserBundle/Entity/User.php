@@ -6,6 +6,8 @@ namespace Ccta\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
+use Ccta\PlayerBundle\Entity\Player;
 
 /**
  * User
@@ -184,4 +186,44 @@ class User extends BaseUser
 		return $this->getUploadDir()."/".$this->avatarPath;
 	}
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add players
+     *
+     * @param Player $player
+     * @return User
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove players
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
 }

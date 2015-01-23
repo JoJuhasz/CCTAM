@@ -9,6 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GameController extends Controller
 {
+	public function setActivePlayerAction(Request $request, Player $player)
+	{
+		$request->getSession()->set('activePlayer', $player);
+		$request->getSession()->remove('activeWorld');
+
+		$request->getSession()->getFlashBag()->add('info', 'Le joueur est à présent actif.');
+
+		return $this->redirect($request->headers->get('referer'));
+	}
+
     public function createAction(Request $request)
     {
 	    $player = new Player();
@@ -18,6 +28,9 @@ class GameController extends Controller
 
 	    if($form->isValid()) {
 		    $em = $this->getDoctrine()->getManager();
+
+		    $player->setUser($this->getUser());
+
 		    $em->persist($player);
 		    $em->flush();
 

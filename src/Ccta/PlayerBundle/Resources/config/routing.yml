@@ -1,16 +1,21 @@
 
-create:
+ccta_player_create:
     path:     /player/create
     defaults: { _controller: CctaPlayerBundle:Game:create }
 
-edit:
+ccta_player_edit:
     path:     /player/edit/{id}
     defaults: { _controller: CctaPlayerBundle:Game:edit }
     requirements:
         id: \d+
 
-delete:
+ccta_player_delete:
     path:     /player/delete/{id}
     defaults: { _controller: CctaPlayerBundle:Game:delete }
     requirements:
         id: \d+
+
+
+ccta_player_set_active_player:
+    path:     /player/set-active-player/{id}
+    defaults: { _controller: CctaPlayerBundle:Game:setActivePlayer }

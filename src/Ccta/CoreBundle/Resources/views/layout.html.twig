@@ -85,7 +85,13 @@
                         <div class="panel panel-success panel-default">
                             <div class="panel-heading">Joueurs</div>
                             <div class="panel-body">
-                                Panel content
+                                <p><em>Cliquez sur un joueur pour l'activer</em></p>
+                                <div class="list-group">
+                                {% for player in app.user.players %}
+                                    <a href="{{ path('ccta_player_set_active_player', {'id': player.id}) }}" class="list-group-item">{{ player.playername }}</a>
+                                {% endfor %}
+                                </div>
+                                <a class="btn btn-block btn-success" href="{{ path('ccta_player_create') }}">Créer un joueur</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +112,7 @@
 
     <p>
         {% for message in app.session.flashbag.get('info') %}
-    <div class="alert alert-info" role="alert">Message flash : {{ message }}</div>
+    <div class="alert alert-success" role="alert">Message flash : {{ message }}</div>
     {% endfor %}
     </p>
 
