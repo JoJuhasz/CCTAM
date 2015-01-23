@@ -20,8 +20,10 @@
                     <tr>
                         <td>{{ alliance.name }}</td>
                         <td>{{ alliance.getOwner().player.playername }}</td>
-                        <td>25/50</td>
-                        <td></td>
+                        <td>{{ alliance.players.count() }}/50</td>
+                        <td>
+                            <a href="{{ path('ccta_alliance_recruiting_recruit_apply', {'allianceId': alliance.id}) }}" class="btn btn-success">Postuler</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
