@@ -33,7 +33,10 @@ class GameController extends Controller
 			$em->persist($world);
 			$em->flush();
 
-			return $this->redirect($this->generateUrl('ccta_game_index'));
+			$request->getSession()->remove('activePlayer');
+			$request->getSession()->remove('activeWorld');
+
+			return $this->redirect($this->generateUrl('ccta_core_homepage'));
 		}
 
 		$worlds = $em->getRepository('CctaWorldBundle:World')

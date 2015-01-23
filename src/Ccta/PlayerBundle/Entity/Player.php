@@ -54,7 +54,7 @@ class Player
 	protected $user;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Ccta\WorldBundle\Entity\World", mappedBy="players", cascade={"persist","remove"})
+	 * @ORM\ManyToMany(targetEntity="Ccta\WorldBundle\Entity\World", mappedBy="players", cascade={"persist","remove"}, fetch="EAGER")
 	 * @ORM\JoinColumn(nullable=true)
 	 */
 	private $worlds;

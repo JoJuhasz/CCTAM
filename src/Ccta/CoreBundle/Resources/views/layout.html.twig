@@ -114,10 +114,14 @@
                                     {% set worlds = player.worlds %}
                                     <div class="list-group">
                                         {% for world in worlds %}
-                                        <a href="{{ path('ccta_world_set_active_world', {'id': world.id}) }}" class="list-group-item">{{ world.name }}</a>
+                                        <a href="{{ path('ccta_world_set_active_world', {'id': world.id}) }}" class="list-group-item">{{ world.name }}
+                                            {% if(app.session.has('activeWorld') and app.session.get('activeWorld').id == world.id) %}
+                                                <span class="label label-success pull-right">Actif</span>
+                                            {% endif %}
+                                        </a>
                                         {% endfor %}
                                     </div>
-                                    <a class="btn btn-block btn-success" href="">Rejoindre un monde</a>
+                                    <a class="btn btn-block btn-success" href="{{ path('ccta_world_join') }}">Rejoindre un monde</a>
                                 {% endif %}
                             </div>
                         </div>
