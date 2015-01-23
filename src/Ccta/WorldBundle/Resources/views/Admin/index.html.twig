@@ -1,5 +1,38 @@
-{% extends '@CctaCore/admin.html.twig' %}
+{% extends "CctaWorldBundle::admin.html.twig" %}
+
+
 
 {% block body %}
+    <a href="{{ path('ccta_world_admin_add') }}" class="btn btn-success btn-block">Add new world</a>
+
+    <h4 class="page-header">Existing worlds</h4>
+    <div class="well">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Worldname</th>
+                <th>Max players</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for world in worlds %}
+                <tr>
+                    <td>{{ world.id }}</td>
+                    <td>{{ world.name }}</td>
+                    <td>{{ world.maxPlayers }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="{{ path('ccta_world_admin_edit', {'id': world.id}) }}" class="btn btn-default btn-sm">Modifier</a>
+                            <a href="{{ path('ccta_world_admin_delete', {'id': world.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 
 {% endblock %}

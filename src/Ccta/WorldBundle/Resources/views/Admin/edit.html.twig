@@ -1,0 +1,22 @@
+{% extends "CctaWorldBundle::admin.html.twig" %}
+
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="#"><i class="fa fa-pencil"></i> Edit World</a></li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Edit world '{{ world.name }}'</h3>
+                </div>
+                <div class="box-body">
+                    {{ include("CctaWorldBundle:Admin:form.html.twig") }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

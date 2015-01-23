@@ -1,0 +1,26 @@
+{% extends "CctaWorldBundle::admin.html.twig" %}
+
+{% block title %}
+    Supprimer un monde - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h2>Supprimer un utilisateur</h2>
+
+    <p>
+        Etes-vous certain de vouloir supprimer le monde "{{ world.worldname }}" ?
+    </p>
+
+    <form action="{{ path('ccta_world_admin_delete', {'id': world.id}) }}" method="post">
+        <a href="{{ path('ccta_world_admin_index') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

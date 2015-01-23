@@ -1,0 +1,19 @@
+{% extends '@CctaWorld/layout.html.twig' %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h2>Rejoindre un monde</h2>
+    </div>
+
+    {% for world in worlds %}
+        {% if(not player_worlds.contains(world)) %}
+        <div class="col-md-3 well well-lg">
+            <p class="text-center">
+                <a href="{{ path('ccta_world_join') }}?world_id={{ world.id }}" class="btn btn-success">{{ world.name }}</a><br/>
+            </p>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

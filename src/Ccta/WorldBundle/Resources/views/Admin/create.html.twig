@@ -1,0 +1,23 @@
+{% extends "CctaWorldBundle::admin.html.twig" %}
+
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="#"><i class="fa fa-plus circle"></i> Create world</a></li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Create new world</h3>
+                </div>
+                <div class="box-body">
+                    {{ include("CctaWorldBundle:Admin:form.html.twig") }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form(form) }}
+{% endblock %}

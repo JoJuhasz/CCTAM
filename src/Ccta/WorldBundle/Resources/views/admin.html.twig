@@ -1,0 +1,10 @@
+{% extends "CctaCoreBundle::admin.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block admintitle %}
+    Worlds <small>Manage worlds</small>
+{% endblock %}
+{% block breadcrumbs %}
+    <li><a href="{{ path('ccta_world_admin_index') }}"><i class="fa fa-user"></i> Worlds</a></li>
+{% endblock %}

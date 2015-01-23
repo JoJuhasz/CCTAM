@@ -1,0 +1,36 @@
+body{ padding-top: 51px; }
+.clickable{ cursor: pointer; }
+
+#afternav-panel{
+	width: 100%;
+	background: #111;
+	border-bottom: 3px solid #77b300;
+}
+
+
+
+
+#afternav-panel-content{
+	display: none;
+	border-top: 3px solid #77b300;
+}
+
+#afternav-panel-content h3{
+	color: #77b300;
+}
+
+.profile-thumb-container{
+	height: 80px;
+	width: 80px;
+	margin: 0 auto;
+	border-radius: 40px;
+	overflow: hidden;
+}
+.profile-thumb{
+	height: 80px;
+}
+.panel-title-row{
+	margin: 15px 0;
+}
+
+#afternav-panel .list-group { margin-bottom: 0;}

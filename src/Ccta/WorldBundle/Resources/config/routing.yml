@@ -1,3 +1,27 @@
-ccta_worlds_admin_index:
-    path: '/admin/worlds'
+ccta_world_admin_index:
+    path:     /admin/worlds
     defaults: { _controller: CctaWorldBundle:Admin:index }
+
+ccta_world_admin_add:
+    path:     /admin/worlds/add
+    defaults: { _controller: CctaWorldBundle:Admin:create }
+
+ccta_world_admin_edit:
+    path:     /admin/worlds/edit/{id}
+    defaults: { _controller: CctaWorldBundle:Admin:edit }
+    requirements:
+        id: \d+
+
+ccta_world_admin_delete:
+    path:     /admin/worlds/delete/{id}
+    defaults: { _controller: CctaWorldBundle:Admin:delete }
+    requirements:
+        id: \d+
+
+ccta_world_set_active_world:
+    path:     /world/set-active-world
+    defaults: { _controller: CctaWorldBundle:Game:setActiveWorld }
+
+ccta_world_join:
+    path:     /world/join-world
+    defaults: { _controller: CctaWorldBundle:Game:join }

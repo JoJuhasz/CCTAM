@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="ccta_world")
  * @ORM\Entity(repositoryClass="Ccta\WorldBundle\Entity\WorldRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class World
 {
@@ -21,12 +22,19 @@ class World
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="name", type="string", length=255)
+	 */
+	private $name;
+
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="max_players", type="integer")
+	 */
+	private $maxPlayers;
 
 	/**
 	 * @var \DateTime
@@ -121,4 +129,40 @@ class World
     {
         return $this->openAt;
     }
+
+    /**
+     * Set maxPlayers
+     *
+     * @param integer $maxPlayers
+     * @return World
+     */
+    public function setMaxPlayers($maxPlayers)
+    {
+        $this->maxPlayers = $maxPlayers;
+
+        return $this;
+    }
+
+    /**
+     * Get maxPlayers
+     *
+     * @return integer 
+     */
+    public function getMaxPlayers()
+    {
+        return $this->maxPlayers;
+    }
+
+	/**
+	 * Called before saving the entity
+	 *
+	 * @ORM\PrePersist()
+	 * @ORM\PreUpdate()
+	 */
+	public function updateDate()
+	{
+		if (is_null($this->getCreatedAt())) {
+			$this->setCreatedAt(new \DateTime());
+		}
+	}
 }
