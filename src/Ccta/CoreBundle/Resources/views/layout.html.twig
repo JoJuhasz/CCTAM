@@ -31,13 +31,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a id="afternav-panel-opener" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ app.user.username }} <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                        </ul>
                     </li>
                 {% else %}
                     <li class="dropdown">
@@ -56,7 +52,54 @@
 </div>
 {% block afternav %}
     <div id="afternav-panel">
-        AFTERNAME
+        <div id="afternav-panel-content">
+            <div class="container">
+                <div class="row panel-title-row">
+                    <div class="col-md-2 text-center">
+                        <div class="profile-thumb-container">
+                            <img class="profile-thumb" src="{{ asset(app.user.webPath) }}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="afternav-panel-title">Bienvenue {{ app.user.username }}  !</h3>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-success panel-default">
+                            <div class="panel-heading">Profil</div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label>Nom de compte: </label> {{ app.user.username }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label>Email: </label> {{ app.user.email }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-success panel-default">
+                            <div class="panel-heading">Joueurs</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-success panel-default">
+                            <div class="panel-heading">Mondes</div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 <div class="container">
@@ -86,6 +129,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endblock %}
+{% javascripts '@CctaCoreBundle/Resources/public/js/layout.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 </body>
 </html>

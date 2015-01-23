@@ -176,7 +176,7 @@ class User extends BaseUser
 
 	public function getWebPath()
 	{
-		return $this->getUploadRootDir()."/".$this->avatarPath;
+		return $this->getUploadDir()."/".$this->avatarPath;
 	}
 
 }
