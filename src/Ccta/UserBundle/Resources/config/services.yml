@@ -1,4 +1,8 @@
 services:
-#    ccta_user.example:
-#        class: Ccta\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    ccta_user.registration.form.type:
+        class: Ccta\UserBundle\Form\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: ccta_user_registration }
