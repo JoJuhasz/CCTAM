@@ -10,12 +10,15 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Mon joueur
+                    Informations
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <label>Nom de joueur: </label> {{ player.playername }}
+                            <label>Joueur: </label> {{ player.playername }}
+                        </li>
+                        <li class="list-group-item">
+                            <label>Monde: </label> {{ world.name }}
                         </li>
                     </ul>
                 </div>
@@ -28,7 +31,11 @@
                 </div>
                 <div class="panel-body">
                     {% if alliance is null %}
-                    <em class="text-danger">Vous n'avez pas encore rejoint d'alliance sur ce monde</em>
+                    <p><em class="text-danger">Vous n'avez pas encore rejoint d'alliance sur ce monde</em></p>
+                        <div class="btn-group">
+                        <a class="btn btn-success " href="{{ path('ccta_alliance_recruiting_recruit_recruiters') }}"><span class="glyphicon glyphicon-search"></span> Chercher une alliance</a>
+                        <a class="btn btn-success" href="{{ path('ccta_alliance_create') }}"><span class="glyphicon glyphicon-plus"></span> Créer une alliance</a>
+                        </div>
                     {% else %}
                         <p><strong>{{ alliance.alliance.intro }}</strong></p>
                         <p>{{ alliance.alliance.description }}</p>

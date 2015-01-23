@@ -399,4 +399,14 @@ class Alliance
 	{
 		return $this->getUploadDir()."/".$this->imagePath;
 	}
+
+	public function getOwner()
+	{
+		$players = $this->getPlayers();
+		foreach($players as $player) {
+			if($player->getRole() == "CCTA_ROLE_ALLIANCE_OWNER") {
+				return $player;
+			}
+		}
+	}
 }
