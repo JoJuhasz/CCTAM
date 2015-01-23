@@ -1,0 +1,3 @@
+ccta_alliance_create:
+    path: /alliance/create
+    defaults: { _controller: CctaAllianceBundle:Game:create }

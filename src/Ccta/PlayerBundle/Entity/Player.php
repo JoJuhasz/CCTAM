@@ -60,6 +60,11 @@ class Player
 	private $worlds;
 
 	/**
+	 * @ORM\OneToMany(targetEntity="Ccta\AllianceBundle\Entity\AlliancePlayer", mappedBy="player")
+	 */
+	protected $alliances;
+
+	/**
 	 * Avatar path
 	 *
 	 * @var string

@@ -2,12 +2,15 @@
 
 namespace Ccta\AllianceBundle\Entity;
 
+use Ccta\PlayerBundle\Entity\Player;
+use Ccta\WorldBundle\Entity\World;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Alliance
  *
- * @ORM\Table()
+ * @ORM\Table(name="ccta_alliance")
  * @ORM\Entity(repositoryClass="Ccta\AllianceBundle\Entity\AllianceRepository")
  */
 class Alliance
@@ -48,6 +51,16 @@ class Alliance
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Ccta\WorldBundle\Entity\World")
+	 */
+	protected $world;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="Ccta\AllianceBundle\Entity\AlliancePlayer", mappedBy="alliance")
+	 */
+	protected $players;
 
 
     /**
@@ -150,5 +163,68 @@ class Alliance
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
+
+    /**
+     * Set world
+     *
+     * @param World $world
+     * @return Alliance
+     */
+    public function setWorld(World $world = null)
+    {
+        $this->world = $world;
+
+        return $this;
+    }
+
+    /**
+     * Get world
+     *
+     * @return World
+     */
+    public function getWorld()
+    {
+        return $this->world;
+    }
+
+    /**
+     * Add players
+     *
+     * @param Player $player
+     * @return Alliance
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove players
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }

@@ -19,6 +19,7 @@ class AllianceType extends AbstractType
             ->add('abbr')
             ->add('intro')
             ->add('description')
+	        ->add('save', 'submit')
         ;
     }
     
