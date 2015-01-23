@@ -12,3 +12,7 @@ ccta_alliance_recruiting_recruit_apply:
     defaults: { _controller: CctaAllianceBundle:Recruiting/Recruit:apply }
     requirements:
         alliance_id: \d+
+
+ccta_alliance_manage_index:
+    path: /alliance/manage
+    defaults: { _controller: CctaAllianceBundle:Manage:index }
