@@ -2,6 +2,7 @@
 
 namespace Ccta\AllianceBundle\Entity;
 
+use Ccta\PlayerBundle\Entity\Player;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -72,5 +73,51 @@ class AlliancePlayer
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set alliance
+     *
+     * @param \Ccta\AllianceBundle\Entity\Alliance $alliance
+     * @return AlliancePlayer
+     */
+    public function setAlliance(Alliance $alliance)
+    {
+        $this->alliance = $alliance;
+
+        return $this;
+    }
+
+    /**
+     * Get alliance
+     *
+     * @return \Ccta\AllianceBundle\Entity\Alliance 
+     */
+    public function getAlliance()
+    {
+        return $this->alliance;
+    }
+
+    /**
+     * Set player
+     *
+     * @param \Ccta\PlayerBundle\Entity\Player $player
+     * @return AlliancePlayer
+     */
+    public function setPlayer(Player $player)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \Ccta\PlayerBundle\Entity\Player 
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 }

@@ -53,7 +53,7 @@ class Alliance
     private $description;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Ccta\WorldBundle\Entity\World")
+	 * @ORM\ManyToOne(targetEntity="Ccta\WorldBundle\Entity\World", cascade={"persist"})
 	 */
 	protected $world;
 
@@ -198,10 +198,10 @@ class Alliance
     /**
      * Add players
      *
-     * @param Player $player
+     * @param AlliancePlayer $player
      * @return Alliance
      */
-    public function addPlayer(Player $player)
+    public function addPlayer(AlliancePlayer $player)
     {
         $this->players[] = $player;
 
@@ -211,9 +211,9 @@ class Alliance
     /**
      * Remove players
      *
-     * @param Player $player
+     * @param AlliancePlayer $player
      */
-    public function removePlayer(Player $player)
+    public function removePlayer(AlliancePlayer $player)
     {
         $this->players->removeElement($player);
     }
