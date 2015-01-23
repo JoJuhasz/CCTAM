@@ -53,6 +53,11 @@ class Alliance
     private $description;
 
 	/**
+	 * @ORM\Column(name="recruit_status", type="integer", options={"unsigned":true, "default":1})
+	 */
+	protected $recruitStatus;
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Ccta\WorldBundle\Entity\World", cascade={"persist"})
 	 */
 	protected $world;
@@ -61,6 +66,8 @@ class Alliance
 	 * @ORM\OneToMany(targetEntity="Ccta\AllianceBundle\Entity\AlliancePlayer", mappedBy="alliance")
 	 */
 	protected $players;
+
+
 
 
     /**
@@ -226,5 +233,28 @@ class Alliance
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    /**
+     * Set recruitStatus
+     *
+     * @param integer $recruitStatus
+     * @return Alliance
+     */
+    public function setRecruitStatus($recruitStatus)
+    {
+        $this->recruitStatus = $recruitStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get recruitStatus
+     *
+     * @return integer 
+     */
+    public function getRecruitStatus()
+    {
+        return $this->recruitStatus;
     }
 }

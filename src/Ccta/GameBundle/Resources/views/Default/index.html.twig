@@ -13,7 +13,11 @@
                     Mon joueur
                 </div>
                 <div class="panel-body">
-
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Nom de joueur: </label> {{ player.playername }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -23,7 +27,11 @@
                     Mon alliance
                 </div>
                 <div class="panel-body">
-
+                    {% if alliance is null %}
+                    <em class="text-danger">Vous n'avez pas encore rejoint d'alliance sur ce monde</em>
+                    {% else %}
+                        {{ dump(alliance) }}
+                    {% endif %}
                 </div>
             </div>
         </div>

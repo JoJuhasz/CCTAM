@@ -22,7 +22,7 @@ class DefaultController extends Controller
 	    $player = $doctrine->getRepository('CctaPlayerBundle:Player')->find($session->get('activePlayer')->getId());
 	    $world  = $doctrine->getRepository('CctaWorldBundle:World')->find($session->get('activeWorld')->getId());
 
-	    $alliances = $doctrine->getRepository('CctaAllianceBundle:AlliancePlayer')->findBy(array(
+	    $alliance = $doctrine->getRepository('CctaAllianceBundle:AlliancePlayer')->findOneBy(array(
 		    'player' => $player,
 		    'world' => $world
 	    ));
@@ -30,7 +30,7 @@ class DefaultController extends Controller
         return $this->render('CctaGameBundle:Default:index.html.twig', array(
 	        'player' => $player,
 	        'world' => $world,
-	        'alliances' => $alliances
+	        'alliance' => $alliance
         ));
     }
 }

@@ -30,7 +30,7 @@ class AlliancePlayer
 	protected $role;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="Ccta\AllianceBundle\Entity\Alliance", inversedBy="players")
+	 * @ORM\ManyToOne(targetEntity="Ccta\AllianceBundle\Entity\Alliance", inversedBy="players", fetch="EAGER")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	protected $alliance;

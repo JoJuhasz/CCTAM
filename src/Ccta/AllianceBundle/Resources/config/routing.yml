@@ -1,3 +1,10 @@
 ccta_alliance_create:
     path: /alliance/create
     defaults: { _controller: CctaAllianceBundle:Game:create }
+
+
+ccta_alliance_recruiting_recruit_apply:
+    path: /alliance/recruiting/apply/{allianceId}
+    defaults: { _controller: CctaAllianceBundle:Recruiting/Recruit:apply }
+    requirements:
+        alliance_id: \d+
