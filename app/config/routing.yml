@@ -1,3 +1,7 @@
+ccta_warlog:
+    resource: "@CctaWarlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ccta_user:
     resource: "@CctaUserBundle/Resources/config/routing.yml"
     prefix:   /
