@@ -2,7 +2,9 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
+    <div class="page-header">
+        <h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
+    </div>
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 

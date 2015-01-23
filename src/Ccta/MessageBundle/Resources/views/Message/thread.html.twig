@@ -21,7 +21,7 @@
     ">
         <div class="panel {% if message.sender == app.user %}panel-primary{% else %}panel-success{% endif %}">
             <div class="panel-heading">
-                <span>{% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}</span>
+                {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
             </div>
             <div class="panel-body">
                 <div class="messenger_thread_message_body" id="message_{{ message.id }}">
@@ -34,7 +34,7 @@
 {% endfor %}
 
     <div class="page-header">
-        <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+        <h2>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h2>
     </div>
 
 <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">

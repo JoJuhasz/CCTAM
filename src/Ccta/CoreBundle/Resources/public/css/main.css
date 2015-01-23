@@ -1,12 +1,49 @@
 body{ padding-top: 51px; }
-.clickable{ cursor: pointer; }
+
+
+/** Common styles **/
+
+hr{
+	border-top: 2px solid #77b300;
+}
+
+/** Page heading **/
+
+.page-header{
+	padding-bottom: 0;
+	margin: 20px 0;
+	border-bottom: 2px solid #77b300;
+}
+
+.page-header h2{
+	font-family: 'Contrail One', cursive;
+	font-size: 26px;
+	font-weight: normal;
+	color: #fff;
+}
+
+/** panel **/
+
+.panel-default .panel-heading,
+.panel-success .panel-heading,
+.panel-primary .panel-heading{
+	color: #fff;
+	font-family: 'Contrail One', cursive;
+	font-size: 14px;
+}
+
+
+
+
+
+
+/** To clean **/
 
 #afternav-panel{
 	width: 100%;
 	background: #111;
 	border-bottom: 3px solid #77b300;
 }
-
 
 
 
@@ -17,6 +54,8 @@ body{ padding-top: 51px; }
 
 #afternav-panel-content h3{
 	color: #77b300;
+	font-family: 'Contrail One', cursive;
+	font-size: 26px;
 }
 
 .profile-thumb-container{
@@ -34,3 +73,4 @@ body{ padding-top: 51px; }
 }
 
 #afternav-panel .list-group { margin-bottom: 0;}
+
