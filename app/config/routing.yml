@@ -1,3 +1,7 @@
+ccta_alliance:
+    resource: "@CctaAllianceBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ccta_world:
     resource: "@CctaWorldBundle/Resources/config/routing.yml"
     prefix:   /
