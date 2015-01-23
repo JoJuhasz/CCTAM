@@ -24,7 +24,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('ccta_core_homepage') }}">Présentation</a></li>
-                <li class="active"><a href="">Jouer</a></li>
+                <li class="active"><a href="{{ path('ccta_game_index') }}">Jouer</a></li>
                 {% if is_granted("ROLE_ADMIN") %}
                     <li><a href=""><span class="text-danger">Admin</span></a></li>
                 {% endif %}
@@ -137,6 +137,9 @@
     <p>
         {% for message in app.session.flashbag.get('info') %}
     <div class="alert alert-success" role="alert">Message flash : {{ message }}</div>
+    {% endfor %}
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger" role="alert">Message flash : {{ message }}</div>
     {% endfor %}
     </p>
 

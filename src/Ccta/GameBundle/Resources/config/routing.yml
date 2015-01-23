@@ -1,0 +1,3 @@
+ccta_game_index:
+    path:     /game
+    defaults: { _controller: CctaGameBundle:Default:index }

@@ -36,6 +36,12 @@ class AlliancePlayer
 	protected $alliance;
 
 	/**
+	 * @ORM\ManyToOne(targetEntity="Ccta\WorldBundle\Entity\World")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	protected $world;
+
+	/**
 	 * @ORM\ManyToOne(targetEntity="Ccta\PlayerBundle\Entity\Player", inversedBy="alliances")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
@@ -98,26 +104,49 @@ class AlliancePlayer
         return $this->alliance;
     }
 
-    /**
-     * Set player
-     *
-     * @param \Ccta\PlayerBundle\Entity\Player $player
-     * @return AlliancePlayer
-     */
-    public function setPlayer(Player $player)
-    {
-        $this->player = $player;
+	/**
+	 * Set player
+	 *
+	 * @param \Ccta\PlayerBundle\Entity\Player $player
+	 * @return AlliancePlayer
+	 */
+	public function setPlayer(Player $player)
+	{
+		$this->player = $player;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get player
-     *
-     * @return \Ccta\PlayerBundle\Entity\Player 
-     */
-    public function getPlayer()
-    {
-        return $this->player;
-    }
+	/**
+	 * Get player
+	 *
+	 * @return \Ccta\PlayerBundle\Entity\Player
+	 */
+	public function getPlayer()
+	{
+		return $this->player;
+	}
+
+	/**
+	 * Set world
+	 *
+	 * @param World $world
+	 * @return AlliancePlayer
+	 */
+	public function setWorld(World $world)
+	{
+		$this->world = $world;
+
+		return $this;
+	}
+
+	/**
+	 * Get world
+	 *
+	 * @return World
+	 */
+	public function getWorld()
+	{
+		return $this->world;
+	}
 }

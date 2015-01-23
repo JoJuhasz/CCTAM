@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Ccta\PlayerBundle\CctaPlayerBundle(),
             new Ccta\WorldBundle\CctaWorldBundle(),
             new Ccta\AllianceBundle\CctaAllianceBundle(),
+            new Ccta\GameBundle\CctaGameBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

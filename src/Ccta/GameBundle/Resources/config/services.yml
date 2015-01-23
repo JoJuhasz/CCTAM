@@ -1,0 +1,4 @@
+services:
+#    ccta_game.example:
+#        class: Ccta\GameBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
