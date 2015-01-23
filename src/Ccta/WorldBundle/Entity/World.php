@@ -3,6 +3,8 @@
 namespace Ccta\WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ccta\PlayerBundle\Entity\Player;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * World
@@ -49,6 +51,13 @@ class World
 	 * @ORM\Column(name="created_at", type="datetime")
 	 */
 	private $createdAt;
+	
+	/**
+	 * @ORM\ManyToMany(targetEntity="Ccta\PlayerBundle\Entity\Player", inversedBy="worlds", cascade={"persist","remove"})
+	 * @ORM\JoinTable(name="player_world")
+	 * @ORM\JoinColumn(nullable=true)
+	 */
+	private $players;
 
 
     /**
@@ -165,4 +174,44 @@ class World
 			$this->setCreatedAt(new \DateTime());
 		}
 	}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
+
+    /**
+     * Add players
+     *
+     * @param Player $player
+     * @return World
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove players
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
 }

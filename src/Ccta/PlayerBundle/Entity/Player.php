@@ -2,6 +2,9 @@
 
 namespace Ccta\PlayerBundle\Entity;
 
+use Ccta\UserBundle\Entity\User;
+use Ccta\WorldBundle\Entity\World;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -49,6 +52,12 @@ class Player
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	protected $user;
+
+	/**
+	 * @ORM\ManyToMany(targetEntity="Ccta\WorldBundle\Entity\World", mappedBy="players", cascade={"persist","remove"})
+	 * @ORM\JoinColumn(nullable=true)
+	 */
+	private $worlds;
 
 	/**
 	 * Avatar path
@@ -151,7 +160,6 @@ class Player
     {
         return $this->description;
     }
-
 
 	/**
 	 * Set avatarPath
@@ -274,10 +282,10 @@ class Player
     /**
      * Set user
      *
-     * @param \Ccta\UserBundle\Entity\User $user
+     * @param User $user
      * @return Player
      */
-    public function setUser(\Ccta\UserBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
 
@@ -287,10 +295,50 @@ class Player
     /**
      * Get user
      *
-     * @return \Ccta\UserBundle\Entity\User 
+     * @return User
      */
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->worlds = new ArrayCollection();
+    }
+
+    /**
+     * Add worlds
+     *
+     * @param World $world
+     * @return Player
+     */
+    public function addWorld(World $world)
+    {
+        $this->worlds[] = $world;
+
+        return $this;
+    }
+
+    /**
+     * Remove worlds
+     *
+     * @param World $world
+     */
+    public function removeWorld(World $world)
+    {
+        $this->worlds->removeElement($world);
+    }
+
+    /**
+     * Get worlds
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getWorlds()
+    {
+        return $this->worlds;
     }
 }
