@@ -1,0 +1,3 @@
+ccta_worlds_admin_index:
+    path: '/admin/worlds'
+    defaults: { _controller: CctaWorldBundle:Admin:index }
