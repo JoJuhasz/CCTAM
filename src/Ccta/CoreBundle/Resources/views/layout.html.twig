@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}THIS IS CCTA{% endblock %}</title>
-    {% stylesheets '@CctaCoreBundle/Resources/public/css/bootstrap.min.css'
-                   '@CctaCoreBundle/Resources/public/css/main.css'  %}
+    {% stylesheets 'bundles/cctacore/css/bootstrap.min.css'
+                   'bundles/cctacore/css/main.css' filter="cssrewrite"  %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
 </head>
