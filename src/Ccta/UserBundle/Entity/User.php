@@ -4,6 +4,7 @@ namespace Ccta\UserBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
@@ -16,7 +17,7 @@ use Ccta\PlayerBundle\Entity\Player;
  * @ORM\Entity(repositoryClass="Ccta\UserBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
 	/**
 	 * @var integer

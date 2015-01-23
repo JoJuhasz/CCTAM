@@ -57,7 +57,7 @@
         <div id="afternav-panel-content"
                 {% if(is_granted("IS_AUTHENTICATED_REMEMBERED") and
                       (not app.session.has('activePlayer') or not app.session.has('activeWorld'))) %}
-                    style="display: block;"
+                    style="/*display: block;*/"
                 {% endif %}
                 >
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

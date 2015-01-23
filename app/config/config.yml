@@ -80,3 +80,8 @@ fos_user:
     registration:
         form:
             type: ccta_user_registration
+
+fos_message:
+    db_driver: orm
+    thread_class: Ccta\MessageBundle\Entity\Thread
+    message_class: Ccta\MessageBundle\Entity\Message
