@@ -24,13 +24,14 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Mon alliance
+                    Mon alliance{% if alliance is not null %}: {{ alliance.alliance.name }}{% endif %}
                 </div>
                 <div class="panel-body">
                     {% if alliance is null %}
                     <em class="text-danger">Vous n'avez pas encore rejoint d'alliance sur ce monde</em>
                     {% else %}
-                        {{ dump(alliance) }}
+                        <p><strong>{{ alliance.alliance.intro }}</strong></p>
+                        <p>{{ alliance.alliance.description }}</p>
                     {% endif %}
                 </div>
             </div>

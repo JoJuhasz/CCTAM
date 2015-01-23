@@ -14,7 +14,7 @@ class GameController extends Controller
 
 		$request->getSession()->getFlashBag()->add('info', 'Le monde est à présent actif.');
 
-		return $this->redirect($request->headers->get('referer'));
+		return $this->redirect($this->generateUrl('ccta_game_index'));
 	}
 
 	public function joinAction(Request $request)

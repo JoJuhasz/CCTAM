@@ -3,12 +3,14 @@
 namespace Ccta\AllianceBundle\Entity;
 
 use Ccta\PlayerBundle\Entity\Player;
+use Ccta\WorldBundle\Entity\World;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AlliancePlayer
  *
- * @ORM\Table(name="ccta_alliance_player")
+ * @ORM\Table(name="ccta_alliance_player",
+ *            uniqueConstraints={@ORM\UniqueConstraint(name="ccta_world_player_unique",columns={"player_id","world_id"})},)
  * @ORM\Entity(repositoryClass="Ccta\AllianceBundle\Entity\AlliancePlayerRepository")
  */
 class AlliancePlayer
@@ -31,7 +33,7 @@ class AlliancePlayer
 
 	/**
 	 * @ORM\ManyToOne(targetEntity="Ccta\AllianceBundle\Entity\Alliance", inversedBy="players", fetch="EAGER")
-	 * @ORM\JoinColumn(nullable=false)
+	 * @ORM\JoinColumn(nullable=true)
 	 */
 	protected $alliance;
 

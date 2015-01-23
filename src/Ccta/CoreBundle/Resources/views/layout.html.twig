@@ -54,7 +54,12 @@
 
 {% block afternav %}
     <div id="afternav-panel">
-        <div id="afternav-panel-content">
+        <div id="afternav-panel-content"
+                {% if(is_granted("IS_AUTHENTICATED_REMEMBERED") and
+                      (not app.session.has('activePlayer') or not app.session.has('activeWorld'))) %}
+                    style="display: block;"
+                {% endif %}
+                >
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div class="container">
                 <div class="row panel-title-row">
@@ -88,6 +93,9 @@
                         <div class="panel panel-success panel-default">
                             <div class="panel-heading">Joueurs</div>
                             <div class="panel-body">
+                                {% if not app.session.has('activePlayer') %}
+                                    <p><em class="text-danger">Aucun joueur actif</em></p>
+                                {% endif %}
                                 <p><em>Cliquez sur un joueur pour l'activer</em></p>
                                 <div class="list-group">
                                 {% for player in app.user.players %}
@@ -109,6 +117,9 @@
                                 {% if(not app.session.has('activePlayer')) %}
                                 <p><em>Veuillez activer un joueur en premier lieu</em></p>
                                 {% else %}
+                                    {% if not app.session.has('activeWorld') %}
+                                        <p><em class="text-danger">Aucun monde actif</em></p>
+                                    {% endif %}
                                     <p><em>Cliquez sur un monde pour l'activer</em></p>
                                     {% set player = app.session.get('activePlayer') %}
                                     {% set worlds = player.worlds %}

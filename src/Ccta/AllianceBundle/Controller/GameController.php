@@ -28,6 +28,7 @@ class GameController extends Controller
 			$alliancePlayer->setRole('CCTA_ROLE_ALLIANCE_OWNER');
 			$alliancePlayer->setPlayer($player);
 			$alliancePlayer->setAlliance($alliance);
+			$alliancePlayer->setWorld($world);
 
 			$alliance->setWorld($world);
 			$alliance->addPlayer($alliancePlayer);

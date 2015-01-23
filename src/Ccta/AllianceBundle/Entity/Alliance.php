@@ -6,6 +6,7 @@ use Ccta\PlayerBundle\Entity\Player;
 use Ccta\WorldBundle\Entity\World;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Alliance
@@ -51,6 +52,29 @@ class Alliance
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+	/**
+	 * Image path
+	 *
+	 * @var string
+	 *
+	 * @ORM\Column(type="string", name="image_path", length=255, nullable=true)
+	 */
+	protected $imagePath;
+
+	/**
+	 * Image file
+	 *
+	 * @var File
+	 *
+	 * @Assert\File(
+	 *     maxSize = "1M",
+	 *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+	 *     maxSizeMessage = "The maxmimum allowed file size is 5MB.",
+	 *     mimeTypesMessage = "Only the filetypes image are allowed."
+	 * )
+	 */
+	protected $imageFile;
 
 	/**
 	 * @ORM\Column(name="recruit_status", type="integer", options={"unsigned":true, "default":1})
@@ -257,4 +281,122 @@ class Alliance
     {
         return $this->recruitStatus;
     }
+
+	/**
+	 * Set imagePath
+	 *
+	 * @param string $imagePath
+	 * @return User
+	 */
+	public function setImagePath($imagePath)
+	{
+		$this->imagePath = $imagePath;
+
+		return $this;
+	}
+
+	/**
+	 * Get imagePath
+	 *
+	 * @return string
+	 */
+	public function getImagePath()
+	{
+		return $this->imagePath;
+	}
+
+
+	/**
+	 * @return File
+	 */
+	public function getImageFile()
+	{
+		return $this->imageFile;
+	}
+
+	/**
+	 * @param File $imageFile
+	 */
+	public function setImageFile($imageFile)
+	{
+		$this->imageFile = $imageFile;
+	}
+
+
+
+	/**
+	 * Called before saving the entity
+	 *
+	 * @ORM\PrePersist()
+	 * @ORM\PreUpdate()
+	 */
+	public function preUpload()
+	{
+		if (null !== $this->imageFile) {
+			// do whatever you want to generate a unique name
+			$filename = "image_alliance_".uniqid(rand(100,999)."_");
+			$this->imagePath = $filename.'.'.$this->imageFile->guessExtension();
+		}
+	}
+
+	/**
+	 * Called before entity removal
+	 *
+	 * @ORM\PreRemove()
+	 */
+	public function removeUpload()
+	{
+		if ($file = $this->getAbsolutePath()) {
+			unlink($file);
+		}
+	}
+
+	/**
+	 * Called after entity persistence
+	 *
+	 * @ORM\PostPersist()
+	 * @ORM\PostUpdate()
+	 */
+	public function upload()
+	{
+
+		if (null === $this->imageFile) {
+			return;
+		}
+
+		// move takes the target directory and then the
+		// target filename to move to
+		$this->imageFile->move(
+			$this->getUploadRootDir(),
+			$this->imagePath
+		);
+
+		// Set the path property to the filename where you've saved the file
+		//$this->path = $this->file->getClientOriginalName();
+
+		// Clean up the file property as you won't need it anymore
+		$this->imageFile = null;
+	}
+
+	protected function getUploadDir()
+	{
+		// On retourne le chemin relatif vers l'image pour un navigateur
+		return 'uploads/alliance/images';
+	}
+
+	protected function getUploadRootDir()
+	{
+		// On retourne le chemin relatif vers l'image pour notre code PHP
+		return __DIR__.'/../../../../web/'.$this->getUploadDir();
+	}
+
+	public function getAbsolutePath()
+	{
+		return $this->getUploadRootDir()."/".$this->imagePath;
+	}
+
+	public function getWebPath()
+	{
+		return $this->getUploadDir()."/".$this->imagePath;
+	}
 }

@@ -24,6 +24,16 @@
     {{ form_errors(form.description) }}
     {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
 </div>
+<div class="form-group">
+    {{ form_label(form.recruitStatus) }}
+    {{ form_errors(form.recruitStatus) }}
+    {{ form_widget(form.recruitStatus, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.imageFile) }}
+    {{ form_errors(form.imageFile) }}
+    {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+</div>
 
 {{ form_rest(form) }}
 
