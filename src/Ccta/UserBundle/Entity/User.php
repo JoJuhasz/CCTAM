@@ -35,6 +35,11 @@ class User extends BaseUser
 	protected $avatarPath;
 
 	/**
+	 * @ORM\OneToMany(targetEntity="Ccta\PlayerBundle\Entity\Player", mappedBy="user")
+	 */
+	protected $players;
+
+	/**
 	 * Avatar file
 	 *
 	 * @var File

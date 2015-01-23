@@ -1,0 +1,34 @@
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+
+{{ form_errors(form) }}
+
+
+<div class="form-group">
+    {{ form_label(form.playername) }}
+    {{ form_errors(form.playername) }}
+    {{ form_widget(form.playername, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.intro) }}
+    {{ form_errors(form.intro) }}
+    {{ form_widget(form.intro, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.avatarFile) }}
+    {{ form_errors(form.avatarFile) }}
+    {{ form_widget(form.avatarFile, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-block btn-success'}}) }}
+</div>
+</div>
+
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}

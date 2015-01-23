@@ -1,0 +1,16 @@
+
+create:
+    path:     /player/create
+    defaults: { _controller: CctaPlayerBundle:Game:create }
+
+edit:
+    path:     /player/edit/{id}
+    defaults: { _controller: CctaPlayerBundle:Game:edit }
+    requirements:
+        id: \d+
+
+delete:
+    path:     /player/delete/{id}
+    defaults: { _controller: CctaPlayerBundle:Game:delete }
+    requirements:
+        id: \d+

@@ -21,29 +21,34 @@ class Player
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+	protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="playername", type="string", length=255)
      */
-    private $playername;
+	protected $playername;
 
     /**
      * @var string
      *
      * @ORM\Column(name="intro", type="string", length=255)
      */
-    private $intro;
+	protected $intro;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+	protected $description;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="Ccta\UserBundle\Entity\User", inversedBy="players")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	protected $user;
 
 	/**
 	 * Avatar path
