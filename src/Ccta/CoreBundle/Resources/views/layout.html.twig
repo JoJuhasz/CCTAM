@@ -114,7 +114,7 @@
                                     {% set worlds = player.worlds %}
                                     <div class="list-group">
                                         {% for world in worlds %}
-                                        <a href="#" class="list-group-item">{{ world.name }}</a>
+                                        <a href="{{ path('ccta_world_set_active_world', {'id': world.id}) }}" class="list-group-item">{{ world.name }}</a>
                                         {% endfor %}
                                     </div>
                                     <a class="btn btn-block btn-success" href="">Rejoindre un monde</a>

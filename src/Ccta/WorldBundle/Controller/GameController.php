@@ -2,16 +2,17 @@
 
 namespace Ccta\WorldBundle\Controller;
 
+use Ccta\WorldBundle\Entity\World;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class GameController extends Controller
 {
-	public function setActiveWorldAction(Request $request)
+	public function setActiveWorldAction(Request $request, World $world)
 	{
-		$id = $request->request->get('world_id');
-		$world = $this->getDoctrine()->getRepository('CctaWorldBundle:World')->find($id);
 		$request->getSession()->set('activeWorld', $world);
+
+		$request->getSession()->getFlashBag()->add('info', 'Le monde est à présent actif.');
 
 		return $this->redirect($request->headers->get('referer'));
 	}

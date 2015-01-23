@@ -19,8 +19,10 @@ ccta_world_admin_delete:
         id: \d+
 
 ccta_world_set_active_world:
-    path:     /world/set-active-world
+    path:     /world/set-active-world/{id}
     defaults: { _controller: CctaWorldBundle:Game:setActiveWorld }
+    requirements:
+        id: \d+
 
 ccta_world_join:
     path:     /world/join-world
