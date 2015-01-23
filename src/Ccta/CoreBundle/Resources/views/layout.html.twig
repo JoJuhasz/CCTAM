@@ -55,6 +55,7 @@
 {% block afternav %}
     <div id="afternav-panel">
         <div id="afternav-panel-content">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div class="container">
                 <div class="row panel-title-row">
                     <div class="col-md-2 text-center">
@@ -105,12 +106,25 @@
                         <div class="panel panel-success panel-default">
                             <div class="panel-heading">Mondes</div>
                             <div class="panel-body">
-                                Panel content
+                                {% if(not app.session.has('activePlayer')) %}
+                                <p><em>Veuillez activer un joueur en premier lieu</em></p>
+                                {% else %}
+                                    <p><em>Cliquez sur un monde pour l'activer</em></p>
+                                    {% set player = app.session.get('activePlayer') %}
+                                    {% set worlds = player.worlds %}
+                                    <div class="list-group">
+                                        {% for world in worlds %}
+                                        <a href="#" class="list-group-item">{{ world.name }}</a>
+                                        {% endfor %}
+                                    </div>
+                                    <a class="btn btn-block btn-success" href="">Rejoindre un monde</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
