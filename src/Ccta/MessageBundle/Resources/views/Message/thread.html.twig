@@ -2,24 +2,46 @@
 
 {% block fos_message_content %}
 
-<h2>{{ thread.subject }}</h2>
+<div class="page-header">
+    <h2>Lire une conversation</h2>
+</div>
+<blockquote>
+    <p>{{ thread.subject }}</p>
+    <small>Discussion créée par {{ thread.createdBy }} le <cite title="Source Title">{{ thread.createdAt.date|date("F jS \\à g:ia") }}</cite></small>
+</blockquote>
 
 {% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
-        </div>
-
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
+<div class="row">
+    <div class="
+    {% if message.sender == app.user %}
+    col-md-8
+    {% else %}
+    col-md-8 col-md-offset-4
+    {% endif %}
+    ">
+        <div class="panel {% if message.sender == app.user %}panel-primary{% else %}panel-success{% endif %}">
+            <div class="panel-heading">
+                <span>{% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}</span>
+            </div>
+            <div class="panel-body">
+                <div class="messenger_thread_message_body" id="message_{{ message.id }}">
+                    {{ message.body }}
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endfor %}
 
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+    <div class="page-header">
+        <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+    </div>
 
 <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
+
+    <div class="form-group">
+        {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+    </div>
 
     <input type="submit" />
 </form>
