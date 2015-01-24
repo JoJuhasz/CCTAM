@@ -159,14 +159,12 @@
 {% endblock %}
 <div class="container">
 
-    <p>
         {% for message in app.session.flashbag.get('info') %}
     <div class="alert alert-success" role="alert">Message flash : {{ message }}</div>
     {% endfor %}
     {% for message in app.session.flashbag.get('error') %}
         <div class="alert alert-danger" role="alert">Message flash : {{ message }}</div>
     {% endfor %}
-    </p>
 
     <div class="row">
         <div id="content" class="col-md-12">
