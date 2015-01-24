@@ -34,3 +34,39 @@ body{ padding-top: 51px; }
 }
 
 #afternav-panel .list-group { margin-bottom: 0;}
+
+
+/** Common styles **/
+
+hr{
+	border-top: 2px solid #77b300;
+}
+
+/** Page heading **/
+
+.page-header{
+	padding-bottom: 0;
+	margin: 20px 0;
+	border-bottom: 2px solid #77b300;
+}
+
+.page-header h2{
+	font-family: 'Contrail One', cursive;
+	font-size: 26px;
+	font-weight: normal;
+	color: #fff;
+}
+
+/** panel **/
+
+.panel-default .panel-heading,
+.panel-success .panel-heading,
+.panel-primary .panel-heading{
+	color: #fff;
+	font-family: 'Contrail One', cursive;
+	font-size: 14px;
+}
+
+
+.badge{ background-color: #77b300; }
+.alert{ margin-top: 10px; margin-bottom: 10px !important; }

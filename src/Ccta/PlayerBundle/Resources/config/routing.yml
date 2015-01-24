@@ -19,3 +19,24 @@ ccta_player_delete:
 ccta_player_set_active_player:
     path:     /player/set-active-player/{id}
     defaults: { _controller: CctaPlayerBundle:Game:setActivePlayer }
+
+
+ccta_player_admin_index:
+    path: /admin/players
+    defaults: { _controller: CctaPlayerBundle:Admin:index  }
+
+ccta_player_admin_create:
+    path: /admin/players/create
+    defaults: { _controller: CctaPlayerBundle:Admin:create  }
+
+ccta_player_admin_edit:
+    path: /admin/players/edit/{id}
+    defaults: { _controller: CctaPlayerBundle:Admin:edit  }
+    requirements:
+        id: \d+
+
+ccta_player_admin_delete:
+    path: /admin/players/delete/{id}
+    defaults: { _controller: CctaPlayerBundle:Admin:delete  }
+    requirements:
+        id: \d+

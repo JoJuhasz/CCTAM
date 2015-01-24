@@ -1,20 +1,20 @@
-{% extends "CctaWorldBundle::admin.html.twig" %}
+{% extends "CctaUserBundle::admin.html.twig" %}
 
 {% block breadcrumbs %}
     {{ parent() }}
-    <li><a href="#"><i class="fa fa-pencil"></i> Edit World</a></li>
+    <li><a href="#"><i class="fa fa-pencil"></i> Edit User</a></li>
 {% endblock %}
 
-{% block ccta_world_admin_content %}
+{% block ccta_user_admin_content %}
 
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Edit world '{{ world.name }}'</h3>
+                    <h3 class="box-title">Edit user '{{ user.username }}'</h3>
                 </div>
                 <div class="box-body">
-                    {{ include("CctaWorldBundle:Admin:form.html.twig") }}
+                    {{ include("CctaUserBundle:Admin:form.html.twig") }}
                 </div>
             </div>
         </div>

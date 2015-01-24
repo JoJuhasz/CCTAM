@@ -1,0 +1,30 @@
+{% extends '@CctaPlayer/admin.html.twig' %}
+
+{% block ccta_player_admin_content %}
+    <div class="page-header">
+        <h2>Gestion des joueurs</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Playername</th>
+                <th>Intro</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.id }}</td>
+                <td>{{ player.playername }}</td>
+                <td>{{ player.intro }}</td>
+                <td class="btn-group">
+                    <a href="{{ path('ccta_player_admin_edit', {'id': player.id}) }}" class="btn btn-default">Modifier</a>
+                    <a href="{{ path('ccta_player_admin_delete', {'id': player.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

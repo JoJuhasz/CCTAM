@@ -3,11 +3,11 @@
     {{ parent() }}
 {% endblock %}
 {% block admintitle %}
-    Worlds <small>Manage worlds</small>
+    Players <small>Manage players</small>
 {% endblock %}
 {% block breadcrumbs %}
-    <li><a href="{{ path('ccta_world_admin_index') }}"><i class="fa fa-user"></i> Worlds</a></li>
+    <li><a href="{{ path('ccta_user_admin_index') }}"><i class="fa fa-user"></i> Players</a></li>
 {% endblock %}
 {% block body %}
-    {% block ccta_world_admin_content %}{% endblock %}
+    {% block ccta_player_admin_content %}{% endblock %}
 {% endblock %}
