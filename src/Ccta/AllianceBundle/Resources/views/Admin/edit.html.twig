@@ -1,0 +1,19 @@
+{% extends "CctaAllianceBundle::admin.html.twig" %}
+
+{% block breadcrumbs %}
+    {{ parent() }}
+    <li><a href="#"><i class="fa fa-pencil"></i> Modifier une alliance</a></li>
+{% endblock %}
+
+{% block ccta_alliance_admin_content %}
+
+    <div class="page-header">
+        <h2>Modifier l'alliance '{{ alliance.name }}'</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            {{ include("CctaAllianceBundle:Admin:form.html.twig") }}
+        </div>
+    </div>
+{% endblock %}

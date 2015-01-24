@@ -1,0 +1,49 @@
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+
+{{ form_errors(form) }}
+
+
+<div class="form-group">
+    {{ form_label(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.world) }}
+    {{ form_errors(form.world) }}
+    {{ form_widget(form.world, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.abbr) }}
+    {{ form_errors(form.abbr) }}
+    {{ form_widget(form.abbr, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.intro) }}
+    {{ form_errors(form.intro) }}
+    {{ form_widget(form.intro, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.recruitStatus) }}
+    {{ form_errors(form.recruitStatus) }}
+    {{ form_widget(form.recruitStatus, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.imageFile) }}
+    {{ form_errors(form.imageFile) }}
+    {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-block btn-success'}}) }}
+</div>
+</div>
+
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}

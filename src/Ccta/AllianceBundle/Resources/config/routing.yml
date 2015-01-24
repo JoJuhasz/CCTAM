@@ -16,3 +16,27 @@ ccta_alliance_recruiting_recruit_apply:
 ccta_alliance_manage_index:
     path: /alliance/manage
     defaults: { _controller: CctaAllianceBundle:Manage:index }
+    
+    
+    
+    
+    
+ccta_alliance_admin_index:
+    path: /admin/alliances
+    defaults: { _controller: CctaAllianceBundle:Admin:index  }
+
+ccta_alliance_admin_create:
+    path: /admin/alliances/create
+    defaults: { _controller: CctaAllianceBundle:Admin:create  }
+
+ccta_alliance_admin_edit:
+    path: /admin/alliances/edit/{id}
+    defaults: { _controller: CctaAllianceBundle:Admin:edit  }
+    requirements:
+        id: \d+
+
+ccta_alliance_admin_delete:
+    path: /admin/alliances/delete/{id}
+    defaults: { _controller: CctaAllianceBundle:Admin:delete  }
+    requirements:
+        id: \d+

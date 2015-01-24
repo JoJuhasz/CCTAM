@@ -1,0 +1,35 @@
+{% extends '@CctaAlliance/admin.html.twig' %}
+
+{% block ccta_alliance_admin_content %}
+    <div class="page-header">
+        <h2>Gestion des alliances</h2>
+    </div>
+
+    <a href="{{ path('ccta_alliance_admin_create') }}" class="btn btn-success btn-block">Créer une alliance</a>
+    <br/>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de l'alliance</th>
+                <th>Intro</th>
+                <th>Monde</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alliance in alliances %}
+            <tr>
+                <td>{{ alliance.id }}</td>
+                <td>{{ alliance.name }}</td>
+                <td>{{ alliance.intro }}</td>
+                <td>{{ alliance.world.name }}</td>
+                <td class="btn-group">
+                    <a href="{{ path('ccta_alliance_admin_edit', {'id': alliance.id}) }}" class="btn btn-default btn-sm">Modifier</a>
+                    <a href="{{ path('ccta_alliance_admin_delete', {'id': alliance.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

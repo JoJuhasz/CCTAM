@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AllianceType extends AbstractType
+class AllianceAdminType extends AllianceType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -14,17 +14,12 @@ class AllianceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
-            ->add('abbr')
-            ->add('intro')
-	        ->add('description')
-	        ->add('recruitStatus')
-	        ->add('imageFile', 'file', array(
-		        'required' => false
-	        ))
-	        ->add('save', 'submit')
-        ;
+	    parent::buildForm($builder, $options);
+
+        $builder->add('world', 'entity', array(
+		    'class' => 'CctaWorldBundle:World',
+		    'property' => 'name'
+	    ));
     }
     
     /**
@@ -42,6 +37,6 @@ class AllianceType extends AbstractType
      */
     public function getName()
     {
-        return 'ccta_alliancebundle_alliance';
+        return 'ccta_alliancebundle_alliance_admin';
     }
 }

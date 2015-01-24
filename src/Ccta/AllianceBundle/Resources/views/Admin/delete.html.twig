@@ -1,0 +1,27 @@
+{% extends "CctaAllianceBundle::admin.html.twig" %}
+
+{% block title %}
+    Supprimer une alliance - {{ parent() }}
+{% endblock %}
+
+{% block ccta_alliance_admin_content %}
+
+    <div class="page-header">
+        <h2>Supprimer une alliance</h2>
+    </div>
+
+    <p>
+        Etes-vous certain de vouloir supprimer l'alliance "{{ alliance.name }}" ?
+    </p>
+
+    <form action="{{ path('ccta_alliance_admin_delete', {'id': alliance.id}) }}" method="post">
+        <a href="{{ path('ccta_alliance_admin_index') }}" class="btn btn-default">
+            Retour
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}
