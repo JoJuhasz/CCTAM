@@ -1,0 +1,27 @@
+{% extends "CctaUserBundle::admin.html.twig" %}
+
+{% block title %}
+    Supprimer un utilisateur - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h2>Supprimer un utilisateur</h2>
+    </div>
+
+
+    <p>
+        Etes-vous certain de vouloir supprimer l'utilisateur '{{ user.username }}' ?
+    </p>
+
+    <form action="{{ path('ccta_user_admin_delete', {'id': user.id}) }}" method="post">
+        <a href="{{ path('ccta_user_admin_index') }}" class="btn btn-default">
+            Retour
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

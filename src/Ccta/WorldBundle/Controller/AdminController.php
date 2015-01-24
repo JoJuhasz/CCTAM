@@ -64,8 +64,26 @@ class AdminController extends Controller
 		));
 	}
 
-	public function deleteAction()
+	public function deleteAction(World $world, Request $request)
 	{
+		$em = $this->getDoctrine()->getManager();
 
+		$form = $this->createFormBuilder()->getForm();
+
+		if ($form->handleRequest($request)->isValid()) {
+
+			$em->remove($world);
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('info', "Le monde a bien été supprimé.");
+
+			return $this->redirect($this->generateUrl('ccta_world_admin_index'));
+		}
+
+		// Si la requête est en GET, on affiche une page de confirmation avant de supprimer
+		return $this->render('CctaWorldBundle:Admin:delete.html.twig', array(
+			'world' => $world,
+			'form'   => $form->createView()
+		));
 	}
 }

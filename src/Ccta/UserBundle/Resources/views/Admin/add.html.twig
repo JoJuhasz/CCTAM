@@ -2,17 +2,19 @@
 
 {% block breadcrumbs %}
     {{ parent() }}
-    <li><a href="#"><i class="fa fa-pencil"></i> Modifier un utilisateur</a></li>
+    <li><a href="#"><i class="fa fa-plus circle"></i> Créer un utilisateur</a></li>
 {% endblock %}
 
 {% block body %}
 
     <div class="page-header">
-        <h2>Modifier l'utilisateur '{{ user.username }}'</h2>
+        <h2>Créer un utilisateur</h2>
     </div>
+
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             {{ include("CctaUserBundle:Admin:form.html.twig") }}
         </div>
     </div>
+    {{ form(form) }}
 {% endblock %}

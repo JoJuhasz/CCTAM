@@ -6,15 +6,17 @@
 
 {% block ccta_world_admin_content %}
 
-    <h2>Supprimer un utilisateur</h2>
+
+    <div class="page-header">
+        <h2>Supprimer un monde</h2>
+    </div>
 
     <p>
-        Etes-vous certain de vouloir supprimer le monde "{{ world.worldname }}" ?
+        Etes-vous certain de vouloir supprimer le monde '{{ world.name }}' ?
     </p>
 
     <form action="{{ path('ccta_world_admin_delete', {'id': world.id}) }}" method="post">
         <a href="{{ path('ccta_world_admin_index') }}" class="btn btn-default">
-            <i class="glyphicon glyphicon-chevron-left"></i>
             Retour
         </a>
         {# Ici j'ai écrit le bouton de soumission à la main #}

@@ -19,6 +19,16 @@
     {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
 </div>
 <div class="form-group">
+    {{ form_label(form.user) }}
+    {{ form_errors(form.user) }}
+    {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.worlds) }}
+    {{ form_errors(form.worlds) }}
+    {{ form_widget(form.worlds, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="form-group">
     {{ form_label(form.avatarFile) }}
     {{ form_errors(form.avatarFile) }}
     {{ form_widget(form.avatarFile, {'attr': {'class': 'form-control'}}) }}

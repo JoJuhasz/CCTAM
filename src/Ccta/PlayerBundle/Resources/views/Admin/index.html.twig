@@ -4,6 +4,9 @@
     <div class="page-header">
         <h2>Gestion des joueurs</h2>
     </div>
+
+    <a href="{{ path('ccta_player_admin_create') }}" class="btn btn-success btn-block">Créer un joueur</a>
+    <br/>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -20,8 +23,8 @@
                 <td>{{ player.playername }}</td>
                 <td>{{ player.intro }}</td>
                 <td class="btn-group">
-                    <a href="{{ path('ccta_player_admin_edit', {'id': player.id}) }}" class="btn btn-default">Modifier</a>
-                    <a href="{{ path('ccta_player_admin_delete', {'id': player.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path('ccta_player_admin_edit', {'id': player.id}) }}" class="btn btn-default btn-sm">Modifier</a>
+                    <a href="{{ path('ccta_player_admin_delete', {'id': player.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

@@ -1,0 +1,27 @@
+{% extends "CctaUserBundle::admin.html.twig" %}
+
+{% block title %}
+    Supprimer un joueur - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h2>Supprimer un joueur</h2>
+    </div>
+
+    <p>
+        Etes-vous certain de vouloir supprimer le joueur "{{ player.playername }}" ?
+    </p>
+
+    <form action="{{ path('ccta_player_admin_delete', {'id': player.id}) }}" method="post">
+        <a href="{{ path('ccta_player_admin_index') }}" class="btn btn-default">
+            Retour
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}
