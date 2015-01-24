@@ -1,1 +1,7 @@
 {% extends '@CctaCore/layout.html.twig' %}
+
+{% block body %}
+    {% include '@CctaGame/Layout/metro-game-menu.html.twig' %}
+    {% block ccta_game_content %}
+    {% endblock %}
+{% endblock %}

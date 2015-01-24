@@ -1,6 +1,6 @@
 {% extends '@CctaGame/layout.html.twig' %}
 
-{% block body %}
+{% block ccta_game_content %}
 
     <div class="page-header">
         <h2>Mon tableau de bord</h2>
@@ -12,16 +12,14 @@
                 <div class="panel-heading">
                     Informations
                 </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <label>Joueur: </label> {{ player.playername }}
-                        </li>
-                        <li class="list-group-item">
-                            <label>Monde: </label> {{ world.name }}
-                        </li>
-                    </ul>
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <label>Joueur: </label> {{ player.playername }}
+                    </li>
+                    <li class="list-group-item">
+                        <label>Monde: </label> {{ world.name }}
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col-md-8">

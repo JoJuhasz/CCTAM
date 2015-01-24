@@ -91,7 +91,6 @@
                     <div class="col-md-4">
                         <div class="panel panel-success panel-default">
                             <div class="panel-heading">Profil</div>
-                            <div class="panel-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <label>Nom de compte: </label> {{ app.user.username }}
@@ -100,7 +99,6 @@
                                         <label>Email: </label> {{ app.user.email }}
                                     </li>
                                 </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -111,16 +109,16 @@
                                     <p><em class="text-danger">Aucun joueur actif</em></p>
                                 {% endif %}
                                 <p><em>Cliquez sur un joueur pour l'activer</em></p>
-                                <div class="list-group">
+                                <a class="btn btn-block btn-success" href="{{ path('ccta_player_create') }}">Créer un joueur</a>
+                            </div>
+                            <div class="list-group">
                                 {% for player in app.user.players %}
                                     <a href="{{ path('ccta_player_set_active_player', {'id': player.id}) }}" class="list-group-item">{{ player.playername }}
-                                    {% if(app.session.has('activePlayer') and app.session.get('activePlayer').id == player.id) %}
-                                        <span class="label label-success pull-right">Actif</span>
-                                    {% endif %}
+                                        {% if(app.session.has('activePlayer') and app.session.get('activePlayer').id == player.id) %}
+                                            <span class="label label-success pull-right">Joueur actif</span>
+                                        {% endif %}
                                     </a>
                                 {% endfor %}
-                                </div>
-                                <a class="btn btn-block btn-success" href="{{ path('ccta_player_create') }}">Créer un joueur</a>
                             </div>
                         </div>
                     </div>
@@ -130,25 +128,26 @@
                             <div class="panel-body">
                                 {% if(not app.session.has('activePlayer')) %}
                                 <p><em>Veuillez activer un joueur en premier lieu</em></p>
+                            </div>
                                 {% else %}
                                     {% if not app.session.has('activeWorld') %}
                                         <p><em class="text-danger">Aucun monde actif</em></p>
                                     {% endif %}
                                     <p><em>Cliquez sur un monde pour l'activer</em></p>
+                                    <a class="btn btn-block btn-success" href="{{ path('ccta_world_join') }}">Rejoindre un monde</a>
                                     {% set player = app.session.get('activePlayer') %}
                                     {% set worlds = player.worlds %}
+                            </div>
                                     <div class="list-group">
                                         {% for world in worlds %}
                                         <a href="{{ path('ccta_world_set_active_world', {'id': world.id}) }}" class="list-group-item">{{ world.name }}
                                             {% if(app.session.has('activeWorld') and app.session.get('activeWorld').id == world.id) %}
-                                                <span class="label label-success pull-right">Actif</span>
+                                                <span class="label label-success pull-right">Monde actif</span>
                                             {% endif %}
                                         </a>
                                         {% endfor %}
                                     </div>
-                                    <a class="btn btn-block btn-success" href="{{ path('ccta_world_join') }}">Rejoindre un monde</a>
                                 {% endif %}
-                            </div>
                         </div>
                     </div>
                 </div>
