@@ -28,6 +28,19 @@ class RecruitController extends Controller
 
 	public function applyAction($allianceId, Request $request)
 	{
-		die('ok'.$allianceId);
+		$em = $this->getDoctrine()->getManager();
+
+		$player = $em->getRepository('CctaPlayerBundle:Player')->find($request->getSession()->get('activePlayer')->getId());
+		$world  = $em->getRepository('CctaWorldBundle:World')->find($request->getSession()->get('activeWorld')->getId());
+		$alliance = $em->getRepository('CctaAllianceBundle:Alliance')->find($allianceId);
+
+
+		return $this->render('@CctaAlliance/Recruiting/Recruit/apply.html.twig', array(
+			'player' => $player,
+			'world' => $world,
+			'alliance' => $alliance
+		));
+
+
 	}
 }
