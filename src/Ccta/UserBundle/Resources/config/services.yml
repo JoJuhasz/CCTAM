@@ -6,3 +6,8 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: ccta_user_registration }
+    ccta_user.profile.form.type:
+        class: Ccta\UserBundle\Form\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: ccta_user_profile }

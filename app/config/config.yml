@@ -80,6 +80,9 @@ fos_user:
     registration:
         form:
             type: ccta_user_registration
+    profile:
+        form:
+            type: ccta_user_profile
 
 fos_message:
     db_driver: orm
