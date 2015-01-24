@@ -45,8 +45,7 @@
                     </li>
                     <li class="dropdown">
                         <a id="afternav-panel-opener" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <span class="glyphicon glyphicon-globe"></span> {{ app.user.username }} <span class="caret"></span>
+                            <span class="glyphicon glyphicon-th-large"></span> {{ app.user.username }} <span class="caret"></span>
                         </a>
                     </li>
                 {% else %}
@@ -75,16 +74,18 @@
                 >
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <div class="container">
-                <div class="row panel-title-row">
-                    <div class="col-md-2 text-center">
+
+                <ul class="panel-right-buttons">
+                    <li><a href="{{ path('fos_user_profile_edit') }}" class="metro-btn bg-success" title="Modifier mon profil"><span class="glyphicon glyphicon-user"></span></a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}" class="metro-btn bg-danger" title="Déconnexion"><span class="glyphicon glyphicon-off"></span></a></li>
+                </ul>
+                <div class="page-header">
+
+                    <h2>
                         <div class="profile-thumb-container">
                             <img class="profile-thumb" src="{{ asset(app.user.webPath) }}" alt="" />
                         </div>
-                    </div>
-                    <div class="col-md-10">
-                        <h3 class="afternav-panel-title">Bienvenue {{ app.user.username }}  !</h3>
-                    </div>
-
+                        Bienvenue {{ app.user.username }}  !</h2>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
