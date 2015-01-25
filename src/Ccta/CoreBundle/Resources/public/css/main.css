@@ -53,8 +53,9 @@ a.metro-btn{
 	background-color: #77b300;
 	color: #fff;
 	margin-right: 10px;
-	font-size: 16px;
 }
+
+
 
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus{ background-color: #77b300; }
 .dropdown-menu>li>a:hover .badge, .dropdown-menu>li>a:focus .badge{ background-color: #fff; color: #77b300; }

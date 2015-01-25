@@ -1,0 +1,33 @@
+{% extends '@CctaAlliance/layout.html.twig' %}
+
+{% block body %}
+
+    <div class="page-header">
+        <h2>Recrutement: Candidatures</h2>
+    </div>
+
+    <table class="table table-stripped">
+        <thead>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for recruit in recruits %}
+            <tr>
+                <td>{{ recruit.id }}</td>
+                <td>{{ recruit.title }}</td>
+                <td>{{ recruit.player.playername }}</td>
+                <td class="btn-group">
+                    <a href="" class="btn btn-default btn-sm">Consulter</a>
+                    <a href="" class="btn btn-success btn-sm">Accepter</a>
+                    <a href="" class="btn btn-danger btn-sm">Refuser</a>
+                    <a href="" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

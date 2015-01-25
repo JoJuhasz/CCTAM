@@ -7,6 +7,10 @@ ccta_alliance_recruiting_recruit_recruiters:
     path: /alliance/recruiting/recruiters
     defaults: { _controller: CctaAllianceBundle:Recruiting/Recruit:recruiters }
 
+ccta_alliance_recruiting_recruit_recruits:
+    path: /alliance/recruiting/recruits
+    defaults: { _controller: CctaAllianceBundle:Recruiting/Recruit:recruits }
+
 ccta_alliance_recruiting_recruit_apply:
     path: /alliance/recruiting/apply/{allianceId}
     defaults: { _controller: CctaAllianceBundle:Recruiting/Recruit:apply }
